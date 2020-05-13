@@ -1,0 +1,40 @@
+# Proteus
+
+// Links
+:axolotl: https://github.com/trevp/axolotl/wiki
+:whisper: https://whispersystems.org/blog/asynchronous-security/
+:sodium: https://github.com/jedisct1/libsodium
+:chacha: https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant
+:curve25519: https://en.wikipedia.org/wiki/Curve25519
+:hkdf-rfc: https://tools.ietf.org/html/rfc5869
+:hkdf-impl: https://github.com/social-network/hkdf
+:hmac: https://en.wikipedia.org/wiki/Hash-based_message_authentication_code
+:mpl: https://img.shields.io/badge/license-MPL_2.0-blue.svg
+:cbor: https://tools.ietf.org/html/rfc7049
+:wiki: https://github.com/social-network/proteus/wiki/Serialisation-format
+:wire: https://github.com/wireapp/proteus
+
+Proteus is an implementation of the link:{axolotl}[axolotl protocol] (later renamed to Double Ratchet Algorithm) without
+header keys. It is suitable for use in asynchronous environments through its
+use of link:{whisper}[prekeys].
+
+The roles of the axolotl protocol for a particular session are fixed through
+the use of prekeys:
+
+    - The side that obtains a prekey and uses it to initiate a session
+      is _Alice_.
+    - The side that receives a prekey message and uses it to initiate a
+      session is _Bob_.
+
+All cryptographic primitives used in the implementation of the protocol are
+provided by link:{sodium}[libsodium]:
+
+    - Cipher: link:{chacha}[ChaCha20]
+    - MAC: link:{hmac}[HMAC-SHA256]
+    - Diffie-Hellman: link:{curve25519}[Curve25519]
+    - KDF: link:{hkdf-rfc}[HKDF] (link:{hkdf-impl}[implementation])
+
+For serialisation of messages, sessions and keys, link:{cbor}[CBOR] is used.
+The precise serialisation format is described in the link:{wiki}[wiki].
+
+Forked from link:{wire}[wire-proteus]

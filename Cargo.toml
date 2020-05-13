@@ -1,0 +1,14 @@
+[package]
+
+name         = "proteus"
+version      = "1.0.3"
+authors      = ["Wire Swiss GmbH <support@wire.com>"]
+description  = "Axolotl protocol implementation"
+homepage     = "https://github.com/social-network/proteus"
+repository   = "git@github.com:social-network/proteus.git"
+license      = "GPL-3.0"
+
+[dependencies]
+cbor-codec    = ">= 0.7.0"
+hkdf          = { git = "https://github.com/social-network/hkdf", tag = "v0.3.2"}
+sodiumoxide   = { version = "^0.2.5", default-features = false, features = ["std"] }
